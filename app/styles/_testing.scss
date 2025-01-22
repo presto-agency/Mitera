@@ -368,41 +368,42 @@
   &__item {
     margin-bottom: 33px;
     display: flex;
+    display: flex;
+    padding-bottom: 56px;
+    border-bottom: 1px solid #e3dfe3;
+    width: 100%;
 
-    @media ($tablet) {
-      flex-basis: 50%;
-      margin-bottom: 63px;
-      &:nth-child(2n) {
-        justify-content: flex-end;
-        position: relative;
-        &:before {
-          content: "";
-          position: absolute;
-          left: 0;
-          top: 0;
-          bottom: 56px;
-          width: 1px;
-          background: #e3dfe3;
+      @media ($tablet) {
+        flex-basis: 50%;
+        margin-bottom: 63px;
+
+        &:nth-child(2n) {
+          justify-content: flex-end;
+          position: relative;
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 56px;
+            width: 1px;
+            background: #e3dfe3;
+          }
+        }
+        &:nth-last-child(2) {
+          #{$root} {
+            border-bottom: 0;
+          }
         }
       }
-      &:nth-last-child(2) {
+
+      &:last-child {
         #{$root} {
           border-bottom: 0;
         }
       }
-    }
-
-    &:last-child {
-      #{$root} {
-        border-bottom: 0;
-      }
-    }
   }
 
-  display: flex;
-  padding-bottom: 56px;
-  border-bottom: 1px solid #e3dfe3;
-  width: 100%;
   @media ($tablet) {
     max-width: calc(100% - 128px);
   }

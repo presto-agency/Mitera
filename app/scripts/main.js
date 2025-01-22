@@ -66,6 +66,7 @@
         panelClass: 'accordion__text', // panel class {string}
         activeClass: 'is-active', // active element class {string}
       });
+      console.log('Accordion initialized')
     },
     initImageSlider: function () {
       const swiperImageSlider = new Swiper(app.imageSlider, {
@@ -328,23 +329,25 @@
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
 
-        const target = document.getElementById(blockID).parentElement;
+        const target = obj;
         if (target.classList.contains('accordion__item')) {
           const trigger = target.querySelector('.accordion__title');
+
           if (trigger && !target.classList.contains('is-active')) {
             trigger.click(); // Відкриваємо акордеон
           }
         }
 
-        if (blockID === 'agencies') {
-          yOffset = -600;
-        }
-        const y = obj.getBoundingClientRect().top + window.scrollY + yOffset;
-        window.scrollTo({ top: y, behavior: 'smooth' });
-        document.querySelector('html').style.overflow = '';
+        setTimeout(() => {
+          const y = obj.getBoundingClientRect().top + window.scrollY - yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          document.querySelector('html').style.overflow = '';
+          window.location.hash = '#' + blockID;
+        }, 300)
       });
     },
   };
+
   //init
   app.initImageSlider();
   app.initTestimonialsSlider();
@@ -384,17 +387,73 @@
       app.showSubMenu(app.header.querySelectorAll('.menu-item-has-children'));
     }
     app.playVideo();
-    const yOffset = -250;
+
+    const headerHeight = 80;
     const anchors = document.querySelectorAll('a[href*="#"]');
+
     anchors.forEach((anchor) => {
       const str = anchor.getAttribute('href');
       const blockID = str.substring(str.indexOf('#') + 1);
-      const obj = document.getElementById(blockID);
+      const obj = document.querySelector('[data-id="'+blockID+'"]');
+
       if (obj) {
-        app.scrollAnchors(anchor, blockID, yOffset, obj);
+        app.scrollAnchors(anchor, blockID, headerHeight, obj);
       }
     });
+
+    scrollAfterLoad();
+    toggleClinic();
+    toggleTextarea();
   });
+
+  const scrollAfterLoad = function (){
+    const blockID = window.location.href.split('#')[1];
+    const target = document.querySelector('[data-id="'+blockID+'"]');
+    const headerHeight = 80;
+
+    if (target) {
+      if (target.classList.contains('accordion__item')) {
+        const trigger = target.querySelector('.accordion__title');
+
+        if (!target.classList.contains('is-active')) {
+          trigger.click(); // Відкриваємо акордеон
+        }
+      }
+
+      setTimeout(() => {
+        const y = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        document.querySelector('html').style.overflow = '';
+      }, 300)
+    }
+
+    // const target = document.getElementById(blockID);
+    // const obj = document.getElementById(blockID);
+    // const header = document.querySelector('.header');
+    // const yOffset = header.getBoundingClientRect().height;
+    // console.log('scrollAfterLoad, blockID ', blockID)
+    // console.log('scrollAfterLoad, obj ', obj)
+    // const y = obj.getBoundingClientRect().top + window.scrollY - yOffset;
+    // // const y = obj.getBoundingClientRect().top + window.scrollY;
+    // window.scrollTo({ top: y, behavior: 'smooth' });
+    // document.querySelector('html').style.overflow = '';
+    //
+    // setTimeout(function (){
+    //   if (target.classList.contains('accordion__item')) {
+    //     const trigger = target.querySelector('.accordion__title');
+    //
+    //     console.log('trigger - ' + trigger.id);
+    //
+    //     if (trigger && !target.classList.contains('is-active')) {
+    //
+    //       console.log('scrollAfterLoad, trigger - ' + trigger);
+    //
+    //       trigger.click(); // Відкриваємо акордеон
+    //     }
+    //   }
+    // }, 1000)
+
+  }
 
   const anchorLinks = document.querySelectorAll('.scroll-to');
   for (let i = 0; i < anchorLinks.length; i++) {
@@ -420,6 +479,55 @@
         }
       }
     });
+  }
+
+  const toggleClinic = () => {
+    const addBtn = document.querySelector('#add-clinic');
+    const form = addBtn.closest('form');
+    const placeForDuplicates = form.querySelector('.form__row-duplicated');
+    let order = 1;
+
+    if (addBtn) {
+      addBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        order++;
+
+        const rows = document.createRange().createContextualFragment(`<div class="form__row-duplicated-item">
+                  <div class="form__row">
+                    <div class="form__item">
+                      <input class="form-input" name="clinic_${order}_contact_first_name" type="text" placeholder="Clinic ${order} Contact First Name" required="">
+                    </div>
+                    <div class="form__item">
+                      <input class="form-input" name="clinic_${order}_contact_last_name" type="text" placeholder="Clinic ${order} Contact Last Name" required="">
+                    </div>
+                  </div>
+                  <div class="form__row">
+                    <div class="form__item">
+                      <input class="form-input" name="clinic_${order}_contact_email_address" type="text" placeholder="Clinic ${order} Contact: Email Address" required="">
+                    </div>
+                    <div class="form__item">
+                      <input class="form-input" name="clinic_${order}_phone_number" type="text" placeholder="Clinic ${order} Phone Number" required="">
+                    </div>
+                  </div>
+                </div>`);
+
+        placeForDuplicates.appendChild(rows);
+      });
+    }
+  }
+
+  const toggleTextarea = () => {
+    const select = document.querySelector('#main_source_of_delay');
+    const textarea = document.querySelector('#main_source_of_delay_textarea');
+    const enableOption = 'other';
+
+    if (select && textarea) {
+      select.addEventListener('change', (e) => {
+        const selectedOption = e.target.value.toLowerCase().replace(/\s/g, '');
+
+        textarea.style.display = selectedOption === enableOption ? 'flex' : 'none';
+      });
+    }
   }
 
   // if (window.innerWidth > 1023) {

@@ -36,6 +36,12 @@
         max-height: calc(100% - 57px);
       }
     }
+
+    .nav-menu {
+      .menu-item.menu-item-has-children{
+        padding-bottom: 0;
+      }
+    }
   }
 
   .container {
@@ -191,16 +197,18 @@
 
   @media ($medium-d) {
     padding-top: 24px;
-    .sticky & {
-      padding-top: 22px;
-    }
-    > .menu-item {
-      padding-bottom: 24px;
 
       .sticky & {
-        padding-bottom: 22px;
+        padding-top: 22px;
       }
-    }
+
+      & > .menu-item {
+        padding-bottom: 24px;
+
+          .sticky & {
+            padding-bottom: 22px;
+          }
+      }
   }
 
   .menu-item {
@@ -248,46 +256,48 @@
       }
 
       @media ($medium) {
-        &:before {
-          display: none;
-        }
         overflow: hidden;
         padding-right: initial;
         padding-bottom: initial;
         margin-bottom: 30px;
-        > a {
-          padding: 0 15px 0 0;
-          position: relative;
-          transition: 500ms;
-
-          &:after {
-            content: "";
-            position: absolute;
-            top: 4px;
-            right: 0;
-            width: 10px;
-            height: 8px;
-            background: url("../images/sprite/ic_arrow_down_grey.svg") center
-              no-repeat;
-            background-size: 10px 8px;
-            transition: transform 0.3s ease-in-out;
-          }
-        }
-        &.active {
-          > a {
-            color: var(--c-orange);
+          & > a {
+            padding: 0 15px 0 0;
+            position: relative;
+            transition: 500ms;
 
             &:after {
-              transform: rotate(-90deg);
-              background: url("../images/sprite/ic_arrow_right_orange.svg")
-                center no-repeat;
+              content: "";
+              position: absolute;
+              top: 4px;
+              right: 0;
+              width: 10px;
+              height: 8px;
+              background: url("../images/sprite/ic_arrow_down_grey.svg") center
+                no-repeat;
+              background-size: 10px 8px;
+              transition: transform 0.3s ease-in-out;
             }
           }
 
-          .sub-menu {
-            opacity: 1;
+          &:before {
+            display: none;
           }
-        }
+
+          &.active {
+            & > a {
+              color: var(--c-orange);
+
+              &:after {
+                transform: rotate(-90deg);
+                background: url("../images/sprite/ic_arrow_right_orange.svg")
+                  center no-repeat;
+              }
+            }
+
+            .sub-menu {
+              opacity: 1;
+            }
+          }
       }
     }
 

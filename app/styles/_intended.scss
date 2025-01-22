@@ -16,15 +16,14 @@
       }
 
       p {
-        strong {
-          @extend .section-title;
-          display: block;
-          line-height: 72px;
-        }
-
-        // text-align: center;
         font-size: 18px;
         line-height: 36px;
+
+          strong {
+            @extend .section-title;
+            display: block;
+            line-height: 72px;
+          }
       }
     }
 

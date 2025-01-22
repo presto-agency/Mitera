@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="styles/main.css">
   </head>
-  <body class="page-template-contacts-page">
+  <body class="service-template-default">
     <header class="header">
       <div class="container">
         <div class="logo"><a href="/"><img src="images/logo.svg"></a></div>
@@ -58,71 +58,86 @@
       </div>
     </header>
     <main>
-      <div class="inner-page"><video autoplay muted loop class="bgVideo dec-video">
+      <div class="inner-page coming-soon"><video autoplay muted loop class="bgVideo dec-video">
 <source src="images/bg_video_banner.mp4" type="video/mp4">
 </video>
-        <div class="container"><ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="https://mitera.studiopresto.dev/" itemprop="item"><span itemprop="name">Home</span></a><meta itemprop="position" content="1"></li><li class="breadcrumbs__separator">&nbsp;/&nbsp;</li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="https://mitera.studiopresto.dev/category/blog/" itemprop="item"><span itemprop="name">Blog</span></a><meta itemprop="position" content="2"></li><li class="breadcrumbs__separator">&nbsp;/&nbsp;</li><li itemprop="itemListElement" itemscope="" itemtype="http://schema.org/ListItem"><a href="https://mitera.studiopresto.dev/testing-options-in-reproductive-genetics/" rel="nofollow" itemprop="item"><span itemprop="name">Testing Options in Reproductive Genetics</span></a><meta itemprop="position" content="3"></li></ul>
-          <div class="contacts">
-            <div class="contacts__heading">
-              <div class="section-title aos-init" data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000"><span>Get in touch</span></div>
-              <div class="contacts__text aos-init" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">Please fill out the form below to get in touch with us</div>
-              <ul class="contacts-list aos-init" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                <li><a href="#"><span class="icon"><svg class="svg">
-<use xlink:href="images/sprite.svg#ic_location">
-</use>
-</svg></span>1049 El Monte Ave, Ste C #633, <br> Mountain View, CA 94040</a></li>
-                <li><a href="mailto:info@miteraperinatal.com"><span class="icon"><svg class="svg">
-<use xlink:href="images/sprite.svg#ic_mail">
-</use>
-</svg></span>info@miteraperinatal.com</a></li>
-                <li><a href="tel:6506467575"><span class="icon"><svg class="svg">
-<use xlink:href="images/sprite.svg#ic_phone">
-</use>
-</svg></span>(650) 646-7575</a></li>
-                <li><a href="tel:6504335143"><span class="icon"><svg class="svg">
-<use xlink:href="images/sprite.svg#ic_phone_old">
-</use>
-</svg></span>(650) 433-5143</a></li>
-              </ul>
+        <section class="responce-program__hero">
+          <div class="ellipse-decor"></div>
+          <div class="container">
+            <div class="coming-soon__title agencies__title">
+              <h1>Expedited Clinic Response Program</h1>
+              <p>
+                <we>HEARD YOU! We have heard from our surrogacy agency partners that many experience a bottleneck in response time from your clinics. Mitera has officially launched our clinic response program designed to help you expedite all of your clinic needs.</we>
+              </p>
+              <p><strong>Simply fill out our form and we’ll help expedite your clinic needs</strong></p>
             </div>
-            <div class="contacts__content">
-              <div class="contact-form-wraper section-with-dna-decor aos-init" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                <div class="section-dna-decor _bottom aos-init" data-aos="fade-up" data-aos-offset="-100" data-aos-delay="500" data-aos-duration="1000"></div>
-                <form class="form">
+            <div class="program-form-wrapper">
+              <form class="form sendForm">
+                <input type="hidden" name="subject" value="Expedited Clinic Response Program">
+                <div class="form__row">
                   <div class="form__item">
-                    <input class="form-input" type="text" placeholder="Name">
+                    <input class="form-input" name="first_name" type="text" placeholder="First name" required>
                   </div>
                   <div class="form__item">
-                    <input class="form-input" type="email" placeholder="Email">
+                    <input class="form-input" name="last_name" type="text" placeholder="Last name" required>
+                  </div>
+                </div>
+                <div class="form__row">
+                  <div class="form__item">
+                    <input class="form-input" name="agency_name" type="text" placeholder="Agency Name" required>
                   </div>
                   <div class="form__item">
-                    <input class="form-input" type="tel" placeholder="Phone">
+                    <input class="form-input" name="clinic_name" type="text" placeholder="Clinic Name" required>
                   </div>
-                  <div class="form__item">
-                    <textarea class="form-input" placeholder="Message"></textarea>
+                </div>
+                <div class="form__row-duplicate">
+                  <div class="form__row">
+                    <div class="form__item">
+                      <input class="form-input" name="primary_clinic_contact_first_name" type="text" placeholder="Clinic Contact First Name" required>
+                    </div>
+                    <div class="form__item">
+                      <input class="form-input" name="primary_clinic_contact_last_name" type="text" placeholder="Clinic Contact Last Name" required>
+                    </div>
                   </div>
+                  <div class="form__row">
+                    <div class="form__item">
+                      <input class="form-input" name="clinic_contact_email_address" type="text" placeholder="Clinic Contact: Email Address" required>
+                    </div>
+                    <div class="form__item">
+                      <input class="form-input" name="clinic_phone_number" type="text" placeholder="Clinic Phone Number" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="form__row-duplicated"></div>
+                <div class="form__row-action">
+                  <button class="btn" type="button" id="add-clinic">+ Add clinic</button>
+                </div>
+                <div class="form__row">
+                  <div class="form__item form__item-large">
+                    <select class="form-input" name="main_source_of_delay" id="main_source_of_delay">
+                      <option value="0" selected="selected" disabled="disabled">Main Source of Delay:</option>
+                      <option value="Medical Records">Medical Records</option>
+                      <option value="Gestational Carrier Records Review">Gestational Carrier Records Review</option>
+                      <option value="Gestational Carrier Approval">Gestational Carrier Approval</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form__row" id="main_source_of_delay_textarea">
+                  <div class="form__item form__item-large">
+                    <textarea class="form-input" placeholder="Message" name="Message"></textarea>
+                  </div>
+                </div>
+                <div class="form__row">
                   <div class="form__submit">
-                    <input type="submit" value="Submit">
+                    <input type="submit" value="submit">
                   </div>
-                </form>
-              </div>
+                </div>
+              </form>
             </div>
           </div>
-        </div>
+        </section>
       </div>
-      <div class="modal micromodal-slide" id="modal-tnx" aria-hidden="true">
-        <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
-          <div class="modal__container" role="dialog" aria-modal="true">
-            <div class="modal__header">
-              <div class="modal__title"><span>Thank You!</span></div>
-            </div>
-            <div class="modal__content">
-              <p>Our manager will contact you.</p><code>To call popup MicroModal.show('modal-tnx')</code>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script>var showModal=!0</script>
     </main>
     <footer class="footer">
       <div class="container">

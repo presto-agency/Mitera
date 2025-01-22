@@ -1,0 +1,58 @@
+extends layouts/default
+block variables
+  -var bodyClass = 'service-template-default';
+block content
+  .inner-page.coming-soon
+    <video autoplay muted loop class="bgVideo dec-video">
+    <source src="images/bg_video_banner.mp4" type="video/mp4">
+    </video>
+    section.responce-program__hero
+      .ellipse-decor
+      .container
+        .coming-soon__title.agencies__title
+          h1 Expedited Clinic Response Program
+          p
+            WE HEARD YOU! We have heard from our surrogacy agency partners that many experience a bottleneck in response time from your clinics. Mitera has officially launched our clinic response program designed to help you expedite all of your clinic needs.
+          p
+            strong Simply fill out our form and we’ll help expedite your clinic needs
+        .program-form-wrapper
+          form.form.sendForm
+            input(type="hidden", name="subject", value="Expedited Clinic Response Program")
+            .form__row
+              .form__item
+                input.form-input(name="first_name", type="text", placeholder="First name", required)
+              .form__item
+                input.form-input(name="last_name", type="text", placeholder="Last name", required)
+            .form__row
+              .form__item
+                input.form-input(name="agency_name", type="text", placeholder="Agency Name", required)
+              .form__item
+                input.form-input(name="clinic_name", type="text", placeholder="Clinic Name", required)
+            .form__row-duplicate
+              .form__row
+                .form__item
+                  input.form-input(name="primary_clinic_contact_first_name", type="text", placeholder="Clinic Contact First Name", required)
+                .form__item
+                  input.form-input(name="primary_clinic_contact_last_name", type="text", placeholder="Clinic Contact Last Name", required)
+              .form__row
+                .form__item
+                  input.form-input(name="clinic_contact_email_address", type="text", placeholder="Clinic Contact: Email Address", required)
+                .form__item
+                  input.form-input(name="clinic_phone_number", type="text", placeholder="Clinic Phone Number", required)
+            .form__row-duplicated
+            .form__row-action
+              button.btn(type="button", id="add-clinic") + Add clinic
+            .form__row
+              .form__item.form__item-large
+                select.form-input(name="main_source_of_delay", id="main_source_of_delay")
+                  option(value="0", selected, disabled) Main Source of Delay:
+                  option(value="Medical Records") Medical Records
+                  option(value="Gestational Carrier Records Review") Gestational Carrier Records Review
+                  option(value="Gestational Carrier Approval") Gestational Carrier Approval
+                  option(value="Other") Other
+            .form__row(id="main_source_of_delay_textarea")
+              .form__item.form__item-large
+                textarea.form-input(placeholder="Message", name="Message")
+            .form__row
+              .form__submit
+                input(type="submit", value="submit")
