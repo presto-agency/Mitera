@@ -490,9 +490,9 @@
     if (addBtn) {
       addBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        order++;
-
-        const rows = document.createRange().createContextualFragment(`<div class="form__row-duplicated-item">
+        if (order < 3) {
+          order++;
+          const rows = document.createRange().createContextualFragment(`<div class="form__row-duplicated-item">
                   <div class="form__row">
                     <div class="form__item">
                       <input class="form-input" name="clinic_${order}_contact_first_name" type="text" placeholder="Clinic ${order} Contact First Name" required="">
@@ -511,7 +511,10 @@
                   </div>
                 </div>`);
 
-        placeForDuplicates.appendChild(rows);
+          placeForDuplicates.appendChild(rows);
+        }
+
+        order > 2 ? addBtn.classList.add('disabled') : addBtn.classList.remove('disabled');
       });
     }
   }

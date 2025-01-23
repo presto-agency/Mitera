@@ -24,6 +24,21 @@
       margin: 0 auto;
       line-height: 2.1em;
     }
+
+    &.agencies__title{
+      margin: 0 auto;
+      max-width: 900px;
+
+        h1, h2, h3, h4, h5, h6 {
+          margin-bottom: 20px;
+        }
+
+        p{
+          & ~ p{
+            margin-top: 20px;
+          }
+        }
+    }
   }
 }
 
@@ -92,6 +107,11 @@
           &:hover{
             color: #fff;
             background-image: linear-gradient(131.34deg, #f99073 0.24%, #d2957e 100.24%);
+          }
+
+          &.disabled{
+            pointer-events: none;
+            opacity: 0.5;
           }
       }
   }
