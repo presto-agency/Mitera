@@ -47,6 +47,15 @@
       }
     }
   }
+  &__subtitle{
+      &-content{
+        padding-top: 12px;
+
+          .btn{
+            margin-top: 5px;
+          }
+      }
+  }
   &-program {
     padding: 40px 0;
     position: relative;
